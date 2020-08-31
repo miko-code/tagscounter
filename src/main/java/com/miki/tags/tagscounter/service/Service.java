@@ -1,7 +1,6 @@
 package com.miki.tags.tagscounter.service;
 
 import com.miki.tags.tagscounter.model.TagData;
-import io.vertx.ext.web.RoutingContext;
 
 import java.util.*;
 
@@ -17,7 +16,7 @@ and summing the valid tags.
     HashMap<String, TagData> tagDataHashMap = getStringTagDataHashMap(input);
     return calTags(tagDataHashMap);
   }
-
+//Generate map of tags name and open close tags for each tag.
   private HashMap<String, TagData> getStringTagDataHashMap(String input) {
     HashMap<String, TagData> tagDataHashMap = new HashMap<>();
     String tagName = "";
@@ -34,11 +33,12 @@ and summing the valid tags.
       } else {
         mapTags(tagDataHashMap, new TagData(tagName, 0, 1));
       }
+      //move the loop to start from the next tags position.
       i = endTag;
     }
     return tagDataHashMap;
   }
-
+//Create or update tag name  and tags value.
   private void mapTags(HashMap<String, TagData> tagDataHashMap, TagData tagDataMap) {
     if (tagDataHashMap.containsKey(tagDataMap.getName())) {
       TagData tagDataVal = tagDataHashMap.get(tagDataMap.getName());
@@ -47,7 +47,7 @@ and summing the valid tags.
       tagDataHashMap.put(tagDataVal.getName(), tagDataVal);
     } else tagDataHashMap.put(tagDataMap.getName(), tagDataMap);
   }
-
+//Calculate valid tags.
   private int calTags(HashMap<String, TagData> tagDataHashMap) {
     int sum = 0;
     Iterator<Map.Entry<String, TagData>> iterator = tagDataHashMap.entrySet().iterator();
