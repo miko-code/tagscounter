@@ -2,7 +2,16 @@
 
 image:https://img.shields.io/badge/vert.x-3.9.2-purple.svg[link="https://vertx.io"]
 
-This application was generated using http://start.vertx.io
+tagscounter is a service that   receive  html as string and return the number of valid tags.
+
+Use case  example.
+```
+Input
+{"html": "<html><head></head><body><div><div></div></body></html>"}
+Output
+{"validTags":4}
+```
+'''
 
 == Building
 
@@ -21,11 +30,5 @@ To run your application:
 ./mvnw clean compile exec:java
 ```
 
-== Help
-
-* https://vertx.io/docs/[Vert.x Documentation]
-* https://stackoverflow.com/questions/tagged/vert.x?sort=newest&pageSize=15[Vert.x Stack Overflow]
-* https://groups.google.com/forum/?fromgroups#!forum/vertx[Vert.x User Group]
-* https://gitter.im/eclipse-vertx/vertx-users[Vert.x Gitter]
 
 
